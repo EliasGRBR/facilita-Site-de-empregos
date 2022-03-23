@@ -10,11 +10,21 @@ use DB;
 class VagaController extends Controller
 {
     public function index(){
+        $i = 0;
         $vagas = DB::table('vagas')
             ->join('users', 'users.id', '=', 'vagas.user_id')
-            ->select('vagas.*', 'users.name')
+            ->select('vagas.*', 'users.name','users.id as empresa')
             ->get();
-        return view('welcome',['vagas' => $vagas]);
+        if($vagas){
+            foreach($vagas as $vaga){
+                $user = new User;
+                $user->id = $vaga->user_id;
+                $vagas[$i]->detalhes_empresa = $user->detalheEmpresa->toArray();
+                $i++;
+            }
+            return view('welcome',['vagas' => $vagas]);
+        }
+        
     }
     public function show($id){
         $vaga = Vaga::findOrFail($id);

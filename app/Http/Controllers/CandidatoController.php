@@ -10,7 +10,6 @@ class CandidatoController extends Controller
 {
     public function index(){
         $user = auth()->user();
-        // $curriculo = Curriculo->index();
         $vagas = $user->CanditaVagas;
         $curriculo = app('App\Http\Controllers\CurriculoController')->index();
         return view('candidato',['user'=> $user,'curriculo' => $curriculo,'vagas'=> $vagas]);

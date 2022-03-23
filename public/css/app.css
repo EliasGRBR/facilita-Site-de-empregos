@@ -1,3 +1,20 @@
+#app, main{
+    min-height: 100vh;
+}
+.card p{
+    margin-top: 16px;
+}
+.dropdown-item:hover{
+    font-weight: bold;
+    background-color: inherit;
+    transition: all .2s;
+}
+.azul-fraco{
+    background-color: #80bfff54;
+}
+body{
+    background-color: #f2f2f233;
+}
 .link {
     text-decoration: none !important;
     color:inherit !important;
