@@ -12,7 +12,7 @@
                     <label for="name">Nome da Empresa:</label>
                     <input class="form-control" type="text" name="name" id="name" placeholder="Nome" value="{{$user->name}}" required>
                 </div>
-                <button class="btn btn-primary my-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                <button class="btn azul-fraco fw-bold my-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                     Editar senha
                   </button><br>
                 <div class="form-group collapse" id="collapseExample">
@@ -29,7 +29,7 @@
                     <input minlength="8" maxlength="20" class="form-control" type="text" name="confirmPass" id="confirmPass" placeholder="Confirmar senha" value="">
                 </div>
             </div>
-                <input class="mt-2 btn btn-primary" type="submit" value="Editar">
+                <input class="mt-2 btn azul-fraco fw-bold" type="submit" value="Editar">
             </form>
     </div>
 </div>
@@ -48,7 +48,7 @@
                     <label for="local">Local:</label>
                     <input class="form-control" type="text" name="local" id="local" placeholder="Local" value="{{$detalhes->local}}">
                 </div>
-                <input class="mt-2 btn btn-primary" type="submit" value="Editar Detalhes">
+                <input class="my-3 btn azul-fraco fw-bold" type="submit" value="Editar Detalhes">
             </form>
     </div>
         @else     
@@ -62,7 +62,7 @@
                     <label for="ramo_de_atuacao">Ramo de atuação:</label>
                     <input class="form-control" type="text" name="ramo_de_atuacao" id="ramo_de_atuacao" placeholder="Ramo de atuação" value="">
                 </div>
-                <input class="mt-2 btn btn-primary" type="submit" value="Cadastrar Detalhes da empresa">
+                <input class="mt-2 btn azul-fraco fw-bold" type="submit" value="Cadastrar Detalhes da empresa">
             </form>
         @endif
     </div>
@@ -89,28 +89,36 @@
                 <label for="descricao">Descrição:</label>
                 <input class="form-control" type="text" name="descricao" id="descricao" placeholder="Descrição" value="" required>
             </div>
-            <input class="mt-2 btn btn-primary" type="submit" value="Cadastrar vaga">
+            <input class="mt-2 btn azul-fraco fw-bold" type="submit" value="Cadastrar vaga">
         </form>
 </div>
-    <div class="row">
-        <div class="col-12">
+    <div class="row pt-3">
+
             @if(count($vagas) > 0)
                 @foreach ($vagas as $vaga)
-                    <h1>{{$vaga->title}}</h1>    
-                    <h1>{{$vaga->salario}}</h1>
-                    <h1>{{$vaga->area_atuacao}}</h1>
-                    <h1>{{$vaga->descricao}}</h1>
-                    <div class="d-flex">
-                    <a class="btn btn-primary"href="vaga/candidatos/{{$vaga->id}}">Ver candidatos</a>
-                    <form action="delete/vaga/{{$vaga->id}}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <input class="btn btn-danger mx-3" type="submit" value="Excluir Vaga">
-                    </form>
+                <div class="col-12 mb-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <h1>{{$vaga->title}}</h1>
+                        </div>
+                        <div class="card-body">
+                                <p>Salario: R${{$vaga->salario}}</p>
+                                <p>Atuação: {{$vaga->area_atuacao}}</p>
+                                <p>Descrição: {{$vaga->descricao}}</p>
+                                <div class="d-flex">
+                                <a class="btn azul-fraco fw-bold"href="vaga/candidatos/{{$vaga->id}}">Ver candidatos</a>
+                                <form action="delete/vaga/{{$vaga->id}}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input class="btn btn-danger mx-3" type="submit" value="Excluir Vaga">
+                                </form>
+                            </div>
+                        </div> 
+                    </div>
                 </div>
                 @endforeach
             @endif
-        </div>
+
     </div>
 </div>
 @endsection

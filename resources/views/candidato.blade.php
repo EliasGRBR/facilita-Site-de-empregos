@@ -13,7 +13,7 @@
                     <label for="name">Nome:</label>
                     <input class="form-control" type="text" name="name" id="name" placeholder="Nome" value="{{$user->name}}" required>
                 </div>
-                <button class="btn btn-primary my-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                <button class="btn azul-fraco fw-bold my-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                     Editar senha
                   </button><br>
                 <div class="form-group collapse" id="collapseExample">
@@ -30,11 +30,11 @@
                     <input minlength="8" maxlength="20" class="form-control" type="text" name="confirmPass" id="confirmPass" placeholder="Confirmar senha" value="">
                 </div>
             </div>
-                <input class="mt-2 btn btn-primary" type="submit" value="Editar">
+                <input class="mt-2 btn azul-fraco fw-bold" type="submit" value="Editar">
             </form>
     </div>
 </div>
-<div class="row">
+<div class="row pt-3">
     <div class="col-12">
         <h2>Curriculo:</h2>
         @if($curriculo)
@@ -53,7 +53,7 @@
                     <label for="experiencia">Experiencia:</label>
                     <input class="form-control" type="text" name="experiencia" id="experiencia" placeholder="" value="{{$curriculo->experiencia}}">
                 </div>
-                <input class="mt-2 btn btn-primary" type="submit" value="Editar Curriculo">
+                <input class="mt-3 btn azul-fraco fw-bold" type="submit" value="Editar Curriculo">
             </form>
     </div>
         @else     
@@ -71,7 +71,7 @@
                     <label for="experiencia">Experiencia:</label>
                     <input class="form-control" type="text" name="experiencia" id="experiencia" placeholder="Experiencia" value="">
                 </div>
-                <input class="mt-2 btn btn-primary" type="submit" value="Cadastrar Curriculo">
+                <input class="mt-2 btn azul-fraco fw-bold" type="submit" value="Cadastrar Curriculo">
             </form>
         @endif
     </div>
@@ -81,7 +81,7 @@
         </div>
         @if($vagas)
         @foreach ($vagas as $vaga)
-            <div class="col-md-3">
+            <div class="col-md-3 mb-3">
                 @switch($vaga->pivot->status)
                     @case(0)
                     <p class="text-center alert alert-danger">Status: Reprovado</p>

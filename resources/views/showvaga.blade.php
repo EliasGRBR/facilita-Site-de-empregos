@@ -5,33 +5,38 @@
 
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
+        <div class="card">
+        <div class="card-header azul-fraco">
         <h1>{{$vaga->title}}</h1>
-        <span>ID: {{$vaga->id}}</span>
+        </div>
+        <div class="card-body">
+        <span class="mb-2 d-flex">ID: {{$vaga->id}}</span>
         <p>Empresa: {{$donoVaga->name}}</p>
         <p>Salario: {{$vaga->salario}}</p>
         <p>Atuação: {{$vaga->area_atuacao}}</p>
         <p>Descrição: {{$vaga->descricao}}</p>
         
-        @if(Auth::user())
-            @if(Auth::user()->empresa)
-            @else
-                @if(!$hasUserJoined)
+                @if(Auth::user())
+                    @if(Auth::user()->empresa)
+                    @else
+                        @if(!$hasUserJoined)
+                            <form action="/candidatar/{{$vaga->id}}" method="post">
+                            @csrf
+                            <input type="submit" value="Candidatar-se" class="btn btn azul-fraco fw-bold">
+                            </form>
+                        @else
+                            <p class="alert alert-danger text-center">Já Canditadato</p>
+                    @endif
+                @endif
+                    @else
                     <form action="/candidatar/{{$vaga->id}}" method="post">
-                    @csrf
-                    <input type="submit" value="Candidatar-se" class="btn btn-primary">
+                        @csrf
+                        <input type="submit" value="Candidatar-se" class="btn btn azul-fraco fw-bold">
                     </form>
-                @else
-                    <p class="alert alert-danger text-center">Já Canditadato</p>
-            @endif
-        @endif
-            @else
-            <form action="/candidatar/{{$vaga->id}}" method="post">
-                @csrf
-                <input type="submit" value="Candidatar-se" class="btn btn-primary">
-            </form>
-        @endif
-
+                @endif
+            </div>
+        </div>
     </div>
 </div>
 
